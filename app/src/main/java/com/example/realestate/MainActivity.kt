@@ -333,18 +333,44 @@ private fun DocumentDraftDialog(
     }
 }
 
-@Composable private fun SectionHeader(title: String, subtitle: String) {
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-        Text(title, color = Ink, fontSize = 17.sp, fontWeight = FontWeight.Bold)
-        Text(subtitle, color = Muted, fontSize = 11.sp)
-    }
-}
+@Composable
+private fun QuickTile(
+    label: String,
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        onClick = onClick,
+        modifier = modifier,
+        shape = RoundedCornerShape(18.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        border = androidx.compose.foundation.BorderStroke(1.dp, Border)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(42.dp)
+                    .background(Color(0xFFE7F5F2), CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(icon, null, tint = Teal)
+            }
 
-@Composable private fun QuickTile(label: String, icon: androidx.compose.ui.graphics.vector.ImageVector, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Card(modifier, onClick = onClick, shape = RoundedCornerShape(18.dp), colors = CardDefaults.cardColors(containerColor = Color.White), border = androidx.compose.foundation.BorderStroke(1.dp, Border)) {
-        Column(Modifier.fillMaxWidth().padding(vertical = 16.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Box(Modifier.size(42.dp).background(Color(0xFFE7F5F2), CircleShape), contentAlignment = Alignment.Center) { Icon(icon, null, tint = Teal) }
-            Text(label, color = Ink, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
+            Text(
+                label,
+                color = Ink,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 12.sp
+            )
         }
     }
 }
