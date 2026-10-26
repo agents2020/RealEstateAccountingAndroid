@@ -425,3 +425,24 @@ private fun QuickTile(
 }
 
 private fun money(value: Double): String = NumberFormat.getNumberInstance(Locale("ar", "YE")).apply { maximumFractionDigits = 2 }.format(value)
+
+
+@Composable
+private fun SectionHeader(title: String, subtitle: String) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Text(
+            text = title,
+            color = Ink,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold
+        )
+        Text(
+            text = subtitle,
+            color = Muted,
+            fontSize = 13.sp
+        )
+    }
+}
